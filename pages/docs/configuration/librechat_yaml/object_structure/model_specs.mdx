@@ -166,7 +166,7 @@ preset:
 **Key:**
 <OptionTable
   options={[
-    ['greeting', 'String (optional)', 'A predefined message that is visible in the UI before a new chat is started.', ''],
+    ['greeting', 'String (optional)', 'A predefined message that is visible in the UI before a new chat is started. This is a good way to provide instructions to the user, or to make the interface seem more friendly and accessible.', ''],
   ]}
 />
 
@@ -176,7 +176,7 @@ preset:
 
 ```yaml filename="modelSpecs / list / {spec_item} / preset / greeting"
 preset:
-  greeting: "Hello! How can I assist you today?"
+  greeting: "This assistant creates meeting notes based on transcripts of Teams recordings. To start, simply paste the transcript into the chat box."
 ```
 
 ### promptPrefix
