@@ -127,23 +127,6 @@ Each spec object in the `list` can have the following settings:
 
 The preset field for a modelSpec list item is made up of a comprehensive configuration blueprint for AI models within the system. It is designed to specify the operational settings of AI models, tailoring their behavior, outputs, and interactions with other system components and endpoints.
 
-### modelLabel
-
-**Key:**
-<OptionTable
-  options={[
-    ['modelLabel', 'String (nullable, optional)', 'The label used to identify the model in user interfaces or logs. It provides a human-readable name for the model, which is displayed in the UI, as well as made aware to the AI.', 'None'],
-  ]}
-/>
-
-**Default:** `None`
-
-**Example:**
-```yaml filename="modelSpecs / list / {spec_item} / preset / modelLabel"
-preset:
-  modelLabel: "Customer Support Bot"
-```
-
 ### endpoint
 
 **Key:**
@@ -159,6 +142,40 @@ preset:
 ```yaml filename="modelSpecs / list / {spec_item} / preset / endpoint"
 preset:
   endpoint: "openAI"
+```
+
+### model
+
+**Key:**
+<OptionTable
+  options={[
+    ['model', 'String (nullable, optional)', 'The model to use for the preset. This has to correspond to a model configured under endpoints.', 'None'],
+  ]}
+/>
+
+**Default:** `None`
+
+**Example:**
+```yaml filename="modelSpecs / list / {spec_item} / preset / model"
+preset:
+  model: "gpt-4-turbo"
+```
+
+### modelLabel
+
+**Key:**
+<OptionTable
+  options={[
+    ['modelLabel', 'String (nullable, optional)', 'The label used to identify the model in user interfaces or logs. It provides a human-readable name for the model, which is displayed in the UI, as well as made aware to the AI.', 'None'],
+  ]}
+/>
+
+**Default:** `None`
+
+**Example:**
+```yaml filename="modelSpecs / list / {spec_item} / preset / modelLabel"
+preset:
+  modelLabel: "Customer Support Bot"
 ```
 
 ### greeting
@@ -219,7 +236,7 @@ preset:
 
 ### model_options
 
-> These settings control the stochastic nature and behavior of model responses, affecting creativity, relevance, and variability.
+> These settings control the stochastic nature and behavior of model responses, affecting creativity, relevance, and variability. Additionally it is possible to specify the number of tokens for the context and output windows.
 
 **Key:**
 <OptionTable
@@ -230,6 +247,8 @@ preset:
     ['frequency_penalty', 'Number (optional)', 'Penalty for repetition in model responses.', ''],
     ['presence_penalty', 'Number (optional)', 'Penalty for repetition in model responses.', ''],
     ['stop', 'Array of Strings (optional)', 'Stop tokens for model responses.', ''],
+    ['maxContextTokens', 'Number (optional)', 'The maximum number of context tokens to provide to the model.', 'This is useful when configuring custom or non-standard models, or when you want to limit the maximum context for this preset.'],
+    ['max_tokens', 'Number (optional)', 'The maximum number of output tokens to request from the model.', 'This is useful when configuring custom or non-standard models, e.g. phi-3.'],
   ]}
 />
 
@@ -238,6 +257,7 @@ preset:
 preset:
   temperature: 0.7
   top_p: 0.9
+  maxContextTokens: 4096
 ```
 
 ### resendFiles
